@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Scanner;
 
+/// Ввод данных по студенту
+
 public class JDBCInsert {
     static final String DB_URL = "jdbc:mysql://localhost:3306/test_db";
     static final String USER = "root";

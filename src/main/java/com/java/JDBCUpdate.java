@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Scanner;
 
+/// Обновить оценку у студента указанного в консоли
+
 public class JDBCUpdate {
 
     static final String DB_URL = "jdbc:mysql://localhost:3306/test_db";
@@ -16,9 +18,9 @@ public class JDBCUpdate {
 
         Connection conn = null;
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the surname of your student"); // Вводим имя студента кому хотим поменять оценку на 7.5
+        System.out.println("Enter the surname of your student"); // Вводим имя студента кому хотим поменять оценку
         String surname = scanner.nextLine();
-        System.out.println("Enter the grade (5,5)"); // Вводим имя студента кому хотим поменять оценку на 7.5
+        System.out.println("Enter the grade (5,5)"); // Вводим оценку
         double avgGrade = scanner.nextDouble();
 
         try {
