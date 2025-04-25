@@ -35,7 +35,9 @@ public class JDBCInsert {
             statement.setString(1, student.getName());
             statement.setString(2, student.getSurname());
             statement.setDouble(3, student.getAvgGrade());
+
             statement.executeUpdate();
+            statement.close();
 
         }catch (SQLException e) {
             e.printStackTrace();
