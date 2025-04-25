@@ -6,7 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-public class JDBCInsert {
+public class JDBCUpdate {
+
     static final String DB_URL = "jdbc:mysql://localhost:3306/test_db";
     static final String USER = "root";
     static final String PASS = "root";
@@ -14,25 +15,21 @@ public class JDBCInsert {
     public static void main(String[] args) {
 
         Connection conn = null;
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Введи имя студента");
-        String name = sc.nextLine();
-        System.out.println("Введи фамилию студента");
-        String surname = sc.nextLine();
-        System.out.println("Средняя оценка (5,5)");  // Вводить через запятую
-        double avgGrade = sc.nextDouble();
-
-        Student student = new Student(name, surname, avgGrade);
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the surname of your student"); // Вводим имя студента кому хотим поменять оценку на 7.5
+        String surname = scanner.nextLine();
+        System.out.println("Enter the grade (5,5)"); // Вводим имя студента кому хотим поменять оценку на 7.5
+        double avgGrade = scanner.nextDouble();
 
         try {
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
             PreparedStatement statement = conn.prepareStatement(
-                    "INSERT INTO students(name, surname, avg_grade) VALUES (?,?,?)");
+                    "UPDATE students SET avg_grade = ? WHERE surname = ?");
 
-            statement.setString(1, student.getName());
-            statement.setString(2, student.getSurname());
-            statement.setDouble(3, student.getAvgGrade());
+            statement.setDouble(1, avgGrade);
+            statement.setString(2, surname);
+
             statement.executeUpdate();
 
         }catch (SQLException e) {
