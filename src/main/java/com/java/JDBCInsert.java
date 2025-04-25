@@ -36,7 +36,7 @@ public class JDBCInsert {
             statement.setString(2, student.getSurname());
             statement.setDouble(3, student.getAvgGrade());
 
-            statement.executeUpdate();
+            statement.executeUpdate();         // Изменение данных
             statement.close();
 
         }catch (SQLException e) {

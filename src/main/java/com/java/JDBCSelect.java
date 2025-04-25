@@ -25,10 +25,11 @@ public class JDBCSelect {
                     "SELECT * FROM students WHERE avg_grade > ?");
 
             statement.setDouble(1, avgGrade);
-            ResultSet resultSet = statement.executeQuery();
+
+            ResultSet resultSet = statement.executeQuery();  // Выполняет запрос SQL к БД
 
             List<Student> studentList = new ArrayList<>();
-            while (resultSet.next()) {
+            while (resultSet.next()) {                      // Переключение на следующую строку
                 Student student = new Student();
 
                 student.setId(resultSet.getLong("id"));
